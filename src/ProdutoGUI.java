@@ -73,5 +73,20 @@ public class ProdutoGUI extends Application {
             produtos.setAll(produtoDAO.listarTodos()); // Atualiza a lista de produtos na tela
             limparCampos(); // Limpa os campos de entrada para uma nova digitação 
         });
+
+        Button botaoAtualizar = new Button("Atualizar");
+        botaoAtualizar.setOnAction(e -> {
+            Produto selectedProduto = tableView.getSelectionModel().getSelectedItem(); // Obtém o produto selecionado
+            if(selectedProduto != null) {
+                selectedProduto.setNome(nomeInput.getText());
+                selectedProduto.setQuantidade(Integer.parseInt(quantidadeInput.getText()));
+                String preco = precoInput.getText().replace(',', '.');
+                selectedProduto.setPreco(Double.parseDouble(preco));
+                selectedProduto.setStatus(statusComboBox.getValue());
+                produtoDAO.atualizar(selectedProduto); // Atualiza o produto no Banco 
+                produtos.setAll(produtoDAO.listarTodos()); // Atualiza a lista de produtos
+                limparCampos(); // Limpar os campos de entrada
+            }
+        });
     }
 }

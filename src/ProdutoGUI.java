@@ -88,5 +88,18 @@ public class ProdutoGUI extends Application {
                 limparCampos(); // Limpar os campos de entrada
             }
         });
+
+        Button botaoExcluir = new Button("Excluir");
+        botaoExcluir.setOnAction(e -> {
+            Produto selectedProduto = tableView.getSelectionModel().getSelectedItem(); // Obtém o produto selecionado
+            if(selectedProduto != null) {
+                produtoDAO.excluir(selectedProduto.getId()); // Exclui o produto do Banco
+                produtos.setAll(produtoDAO.listarTodos()); // Atualizar a lista de produtos
+                limparCampos(); // Limpa os campos de entrada
+            }
+        });
+
+        Button botaoLimpar = new Button("Limpar");
+        botaoLimpar.setOnAction(e -> limparCampos());
     }
 }

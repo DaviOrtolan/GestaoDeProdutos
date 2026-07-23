@@ -34,5 +34,30 @@ public class ProdutoGUI extends Application {
         VBox vBox = new VBox();
         vBox.setPadding(new Insets(10, 10, 10, 10)); // espaçamento entre o conteúdo do VBox e a borda
         vBox.setSpacing(10); // espaçamento enrte cada componente interno do VBox
+
+        HBox nomeProdutoHBox = new HBox();
+        nomeProdutoHBox.setSpacing(10);
+        Label nomeLabel = new Label("Produto: ");
+        nomeInput = new TextField();
+        nomeProdutoHBox.getChildren().addAll(nomeLabel, nomeInput);
+
+        HBox quantidadeHBox = new HBox();
+        quantidadeHBox.setSpacing(10);
+        Label quantidadeLabel = new Label("Quantidade: ");
+        quantidadeInput = new TextField();
+        quantidadeHBox.getChildren().addAll(quantidadeLabel, quantidadeInput);
+
+        HBox precoHBox = new HBox();
+        precoHBox.setSpacing(10);
+        Label precoLabel = new Label("Preço: ");
+        precoInput = new TextField();
+        precoHBox.getChildren().addAll(precoLabel, precoInput);
+
+        HBox statusHBox = new HBox();
+        statusHBox.setSpacing(10);
+        Label statusLabel = new Label("Status: ");
+        statusComboBox = new ComboBox<>();
+        statusComboBox.getItems().addAll("Estoque Normal", "Estoque Baixo");
+        statusHBox.getChildren().addAll(statusLabel, statusComboBox);
     }
 }

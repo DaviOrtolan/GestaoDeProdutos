@@ -59,5 +59,19 @@ public class ProdutoGUI extends Application {
         statusComboBox = new ComboBox<>();
         statusComboBox.getItems().addAll("Estoque Normal", "Estoque Baixo");
         statusHBox.getChildren().addAll(statusLabel, statusComboBox);
+
+        Button botaoAdicionar = new Button("Adicionar");
+        botaoAdicionar.setOnAction(e -> {
+            String preco = precoInput.getText().replace(',', '.'); // substitui vírgula por ponto no preço
+
+            Produto produto = new Produto(nomeInput.getText(), 
+            Integer.parseInt(quantidadeInput.getText()),
+            Double.parseDouble(preco),
+            statusComboBox.getValue());
+
+            produtoDAO.inserir(produto); // Insere novo produto na base de dados
+            produtos.setAll(produtoDAO.listarTodos()); // Atualiza a lista de produtos na tela
+            limparCampos(); // Limpa os campos de entrada para uma nova digitação 
+        });
     }
 }

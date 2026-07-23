@@ -101,5 +101,27 @@ public class ProdutoGUI extends Application {
 
         Button botaoLimpar = new Button("Limpar");
         botaoLimpar.setOnAction(e -> limparCampos());
+
+        tableView = new TableView<>();
+        tableView.setItems(produtos); // Define a lista de produtos na tabela
+        tableView.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY_ALL_COLUMNS); // Ajusta o tamanho das colunas
+        List<TableColumn<Produto, ?>> columns = List.of(
+            criarColuna("ID", "id"),
+            criarColuna("Produto", "nome"),
+            criarColuna("Quantidade", "quantidade"),
+            criarColuna("Preço", "preco"),
+            criarColuna("Status", "status")
+        );
+
+        tableView.getColumns().addAll(columns);
+
+        tableView.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
+            if(newSelection != null) {
+                nomeInput.setText(newSelection.getNome());
+                quantidadeInput.setText(String.valueOf(newSelection.getQuantidade()));
+                precoInput.setText(String.valueOf(newSelection.getPreco()));
+                statusComboBox.setValue(newSelection.getStatus());
+            }
+        });
     }
 }

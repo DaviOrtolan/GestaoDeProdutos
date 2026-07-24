@@ -9,6 +9,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.control.cell.PropertyValueFactory;
 import java.sql.Connection;
+import java.sql.SQLException;
 import java.util.List;
 
 public class ProdutoGUI extends Application {
@@ -135,4 +136,24 @@ public class ProdutoGUI extends Application {
         primaryStage.setScene(scene);
         primaryStage.show();
     }
+
+    // O método stop é automaticamente chamado quando a aplicação é encerrada
+    @Override
+    public void stop() {
+        try {
+            conexaoDB.close(); // Fecha a conexão com o banco de dados
+        } catch (SQLException e) {
+            System.err.println("Erro ao fechar conexão: " + e.getMessage());
+        }
+    }
+
+    // Limpa os campos de entrada do formulário
+    // Este método é chamado após adicionar, atualizar ou excluir um produto
+    private void limparCampos() {
+        nomeInput.clear();
+        quantidadeInput.clear();
+        precoInput.clear();
+        statusComboBox.setValue(null);
+    }
+
 }

@@ -156,4 +156,16 @@ public class ProdutoGUI extends Application {
         statusComboBox.setValue(null);
     }
 
+    /** 
+    Cria uma coluna para a TableView
+    @param title O título da coluna que será exibido no cabeçalho 
+    @param property A propriedade do objeto Produto que esta coluna deve exibir
+    @return A coluna configurada para a TableView
+    */
+    private TableColumn<Produto, String> criarColuna(String title, String property) {
+        TableColumn<Produto, String> col = new TableColumn<>(title);
+        col.setCellValueFactory(new PropertyValueFactory<>(property)); // Define a propriedade da coluna
+        return col;
+    }
+
 }

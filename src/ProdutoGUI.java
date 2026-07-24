@@ -132,7 +132,7 @@ public class ProdutoGUI extends Application {
         vBox.getChildren().addAll(nomeProdutoHBox, quantidadeHBox, precoHBox, statusHBox, buttonBox, tableView); // Inserindo os layouts criados anteriormente dentro do layout principal VBox
 
         Scene scene = new Scene(vBox, 800, 800);
-        //scene.getStylesheets().add("styles-produtos.css"); // Adiciona a folha de estilos
+        scene.getStylesheets().add("styles-produtos.css"); // Adiciona a folha de estilos
         primaryStage.setScene(scene);
         primaryStage.show();
     }

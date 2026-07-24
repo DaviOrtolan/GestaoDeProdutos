@@ -1,6 +1,6 @@
 /* Estilo para o elemento raiz */
 .root {
-    --fx-background-color: dodgerblue; /* define a cor de fundo como azul dodger */
+    -fx-background-color: dodgerblue; /* define a cor de fundo como azul dodger */
 }
 
 /* Estilo para os rótulos (label) */

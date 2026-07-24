@@ -123,5 +123,16 @@ public class ProdutoGUI extends Application {
                 statusComboBox.setValue(newSelection.getStatus());
             }
         });
+
+        HBox buttonBox = new HBox();
+        buttonBox.setSpacing(10);
+        buttonBox.getChildren().addAll(botaoAdicionar, botaoAtualizar, botaoExcluir, botaoLimpar); // Adicionando os botões no layout HBox
+
+        vBox.getChildren().addAll(nomeProdutoHBox, quantidadeHBox, precoHBox, statusHBox, buttonBox, tableView); // Inserindo os layouts criados anteriormente dentro do layout principal VBox
+
+        Scene scene = new Scene(vBox, 800, 800);
+        //scene.getStylesheets().add("styles-produtos.css"); // Adiciona a folha de estilos
+        primaryStage.setScene(scene);
+        primaryStage.show();
     }
 }
